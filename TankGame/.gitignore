@@ -75,3 +75,5 @@ Intermediate/*
 DerivedDataCache/*
 
 TankGame/Content/StarterContent/*
+Content\StarterContent\*
+Content/StarterContent/*
