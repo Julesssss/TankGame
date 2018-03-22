@@ -14,8 +14,12 @@ UCLASS()
 class TANKGAME_API ATankAiController : public AAIController
 {
 	GENERATED_BODY()
+
+private:
+
+	virtual void Tick(float DeltaTime) override;
 	
-	ATank* getControlledTank() const;
+	ATank* GetControlledTank() const;
 
 	virtual void BeginPlay() override;
 

@@ -3,7 +3,7 @@
 #include "TankAiController.h"
 #include "Engine/World.h"
 
-ATank * ATankAiController::getControlledTank() const {
+ATank * ATankAiController::GetControlledTank() const {
 	return Cast<ATank>(GetPawn());
 }
 
@@ -15,6 +15,21 @@ void ATankAiController::BeginPlay() {
 		UE_LOG(LogTemp, Warning, TEXT("Hello AI TankController"))
 	} else {
 		UE_LOG(LogTemp, Warning, TEXT("AI is blind"))
+	}
+}
+
+void ATankAiController::Tick(float DeltaTime) {
+	Super::Tick(DeltaTime);
+	
+	if (GetPlayerTank()) {
+
+		// Move towards player
+
+		// Aim at player
+		GetControlledTank()->AimAt(GetPlayerTank()->GetActorLocation());
+
+		// Fire if ready
+
 	}
 }
 
