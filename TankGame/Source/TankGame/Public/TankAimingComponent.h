@@ -3,11 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "TankBarrel.h"
 #include "Components/ActorComponent.h"
 #include "Classes/Kismet/GameplayStatics.h"
 #include "TankAimingComponent.generated.h"
 
+class UTankBarrel; // Forward declaration
 
+// Hold's Barrel properties
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class TANKGAME_API UTankAimingComponent : public UActorComponent
 {
@@ -19,11 +22,11 @@ public:
 
 	void AimAt(FVector WorldSpaceAim, float LaunchSpeed);
 
-	void SetBarrelReference(UStaticMeshComponent * BarrelToSet);
+	void SetBarrelReference(UTankBarrel * BarrelToSet);
 
 private:	
 
-	UStaticMeshComponent * Barrel = nullptr;
+	UTankBarrel * Barrel = nullptr;
 	
 	void MoveBarrelTowards(FVector AimDirection);
 

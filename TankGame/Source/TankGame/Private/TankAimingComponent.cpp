@@ -13,7 +13,7 @@ UTankAimingComponent::UTankAimingComponent()
 	// ...
 }
 
-void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent * BarrelToSet) {
+void UTankAimingComponent::SetBarrelReference(UTankBarrel * BarrelToSet) {
 
 	Barrel = BarrelToSet;
 
@@ -43,7 +43,7 @@ void UTankAimingComponent::AimAt(FVector WorldSpaceAim, float LaunchSpeed) {
 
 	if (HaveAimSolution) {
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
-		UE_LOG(LogTemp, Warning, TEXT("Aiming at: %s"), *AimDirection.ToString());
+		//UE_LOG(LogTemp, Warning, TEXT("Aiming at: %s"), *AimDirection.ToString());
 
 		MoveBarrelTowards(AimDirection);
 	}
@@ -58,6 +58,7 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
 	UE_LOG(LogTemp, Warning, TEXT("AimAsRotator: %s"), *DeltaRotator.ToString());
 
+	Barrel->Elevate(10.f);
 	// Move the barrel the right amount this frame
 	// Given a max elevation speed, and the frame time
 
